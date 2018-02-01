@@ -4,13 +4,13 @@ import numpy as np
 FC_SIZE = 1024
 DTYPE = tf.float32
 
-# tf.get_variable : get an existing variable with these parameters or create a new one
 
 def _weight_variable(name, shape):
     return tf.get_variable(name=name,
                            shape=shape, 
                            dtype=DTYPE, 
                            initializer=tf.truncated_normal_initializer(stddev=0.1))
+
 
 # Why initialize bias to 0.1?
 def _bias_variable(name, shape):
@@ -46,7 +46,3 @@ def conv3_front_end(input_, in_filters=16, out_filters=16):
                              padding='SAME')
 
     return pool1
-
-
-
-
