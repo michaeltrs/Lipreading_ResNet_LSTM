@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow.python.platform import tf_logging as logging
 import pandas as pd
 from model import front_end, concat_resnet_output, fully_connected_with_logits
 from tfpipeline import get_batch
@@ -40,7 +41,7 @@ optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
 train_op = slim.learning.create_train_op(total_loss,
                                          optimizer,
                                          summarize_gradients=True)
-
+logging.set_verbosity(1)
 slim.learning.train(train_op=train_op,
                     number_of_steps=number_of_steps,
                     logdir='ckpt/train',
