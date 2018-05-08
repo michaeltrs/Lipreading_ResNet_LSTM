@@ -1,8 +1,8 @@
-# Lipreading in the Wild (LRW)
+# Lipreading with Residual networks and LSTM
 This repository contains a model built as part of this project for visual only speech recognition following the architecture of Stafylakis and Tzimiropoulos 2017 (https://arxiv.org/abs/1703.04105).
 
 # Data
-As in th eoriginal paper we use the Lip Reading in the Wild (LRW) dataset \cite{lrw} which consists of videos taken from BBC news with extracts from continuous speech. Every video contains a full single word (the videos are created such that the middle of the word corresponds to the middle frame) as well as part of the previous word's ending and the beginning of the next word. For each video we have label information for what word is spoken and the duration of the word. A total of 500 word labels exist for the dataset. 
+As in the original paper we use the Lip Reading in the Wild (LRW) dataset which consists of videos taken from BBC news with extracts from continuous speech. Every video contains a full single word (the videos are created such that the middle of the word corresponds to the middle frame) as well as part of the previous word's ending and the beginning of the next word. For each video we have label information for what word is spoken and the duration of the word. A total of 500 word labels exist for the dataset. 
 The facial landmark detection system https://github.com/jiankangdeng/Face_Detection_Alignment was used for extracting the mouth ROI. A (118x118) pixel region around the center of the mouth was extracted for each video, transformed to monochrome and saved in ".tfrecords" format. The center of the mouth is taken as the median (across all frames) of the mean mouth locations per frame (mean coordinates of all points corresponding to mouth).
 The data are loaded and passed to the Tensorflow graph via a data pipeline. During that process data augmentation is performed by taking random crops of (112x112) pixels and applying random horizontal flipping (0.5 probability of flipping) consistently across all frames in a video.
 
